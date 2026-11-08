@@ -11,7 +11,7 @@ FUNCTION_BLOCK FB_L298N
     IN2 : BOOL;
   END_VAR
   VAR
-    CUSTOM_PWM_CTRL0 : CUSTOM_PWM_CTRL;
+    FB_CUSTOM_PWM_CTRL0 : FB_CUSTOM_PWM_CTRL;
   END_VAR
 
 {
@@ -25,7 +25,7 @@ FUNCTION_BLOCK FB_L298N
         100
       ],
       "reactFlowViewport": [
-        771,
+        789,
         306
       ],
       "nodes": [
@@ -65,7 +65,7 @@ FUNCTION_BLOCK FB_L298N
                   "x": 3,
                   "y": 140
                 },
-                "id": "branch_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_povoleni",
+                "id": "branch_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_povoleni",
                 "position": "right",
                 "type": "source",
                 "isConnectable": false,
@@ -104,7 +104,7 @@ FUNCTION_BLOCK FB_L298N
                   "x": 3,
                   "y": 140
                 },
-                "id": "branch_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_povoleni",
+                "id": "branch_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_povoleni",
                 "position": "right",
                 "type": "source",
                 "isConnectable": false,
@@ -300,7 +300,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+          "id": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
           "type": "block",
           "position": {
             "x": 310,
@@ -364,11 +364,11 @@ FUNCTION_BLOCK FB_L298N
               },
               {
                 "glbPosition": {
-                  "x": 508,
+                  "x": 526,
                   "y": 50
                 },
                 "relPosition": {
-                  "x": 198,
+                  "x": 216,
                   "y": 36
                 },
                 "id": "ENO",
@@ -382,11 +382,11 @@ FUNCTION_BLOCK FB_L298N
               },
               {
                 "glbPosition": {
-                  "x": 508,
+                  "x": 526,
                   "y": 90
                 },
                 "relPosition": {
-                  "x": 198,
+                  "x": 216,
                   "y": 76
                 },
                 "id": "pwm_out",
@@ -458,11 +458,11 @@ FUNCTION_BLOCK FB_L298N
             "outputHandles": [
               {
                 "glbPosition": {
-                  "x": 508,
+                  "x": 526,
                   "y": 50
                 },
                 "relPosition": {
-                  "x": 198,
+                  "x": 216,
                   "y": 36
                 },
                 "id": "ENO",
@@ -476,11 +476,11 @@ FUNCTION_BLOCK FB_L298N
               },
               {
                 "glbPosition": {
-                  "x": 508,
+                  "x": 526,
                   "y": 90
                 },
                 "relPosition": {
-                  "x": 198,
+                  "x": 216,
                   "y": 76
                 },
                 "id": "pwm_out",
@@ -513,11 +513,11 @@ FUNCTION_BLOCK FB_L298N
             },
             "outputConnector": {
               "glbPosition": {
-                "x": 508,
+                "x": 526,
                 "y": 50
               },
               "relPosition": {
-                "x": 198,
+                "x": 216,
                 "y": 36
               },
               "id": "ENO",
@@ -529,9 +529,10 @@ FUNCTION_BLOCK FB_L298N
                 "right": 0
               }
             },
-            "numericId": "6753344",
+            "numericId": "3778093",
             "variant": {
-              "name": "CUSTOM_PWM_CTRL",
+              "name": "FB_CUSTOM_PWM_CTRL",
+              "documentation": "",
               "type": "function-block",
               "variables": [
                 {
@@ -554,63 +555,97 @@ FUNCTION_BLOCK FB_L298N
                   "name": "procenta",
                   "class": "input",
                   "type": {
-                    "definition": "base-type",
-                    "value": "INT"
-                  }
+                    "value": "INT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
                 },
                 {
                   "name": "povoleni",
                   "class": "input",
                   "type": {
-                    "definition": "base-type",
-                    "value": "BOOL"
-                  }
+                    "value": "BOOL",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
                 },
                 {
                   "name": "pomocna_procenta",
                   "class": "local",
                   "type": {
-                    "definition": "base-type",
-                    "value": "UINT"
-                  }
+                    "value": "UINT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
                 },
                 {
                   "name": "pomocna_zacatek",
                   "class": "local",
                   "type": {
-                    "definition": "base-type",
-                    "value": "UINT"
-                  }
+                    "value": "UINT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": "0",
+                  "documentation": "",
+                  "debug": false
                 },
                 {
                   "name": "pomocna_out",
                   "class": "local",
                   "type": {
-                    "definition": "base-type",
-                    "value": "UINT"
-                  }
+                    "value": "UINT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
+                },
+                {
+                  "name": "procenta_limit",
+                  "class": "local",
+                  "type": {
+                    "value": "INT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
                 },
                 {
                   "name": "pwm_out",
                   "class": "output",
                   "type": {
-                    "definition": "base-type",
-                    "value": "UINT"
-                  }
+                    "value": "UINT",
+                    "definition": "base-type"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
                 }
-              ],
-              "documentation": "",
-              "extensible": false
+              ]
             },
             "variable": {
-              "id": "d5d12e64-690b-4a89-a4d1-4aa98086e158",
-              "name": "CUSTOM_PWM_CTRL0",
+              "name": "FB_CUSTOM_PWM_CTRL0",
+              "class": "local",
               "type": {
                 "definition": "derived",
-                "value": "CUSTOM_PWM_CTRL"
+                "value": "FB_CUSTOM_PWM_CTRL"
               },
-              "class": "local",
               "location": "",
+              "initialValue": "",
               "documentation": "",
               "debug": false
             },
@@ -618,22 +653,6 @@ FUNCTION_BLOCK FB_L298N
             "executionControl": true,
             "lockExecutionControl": true,
             "connectedVariables": [
-              {
-                "handleId": "pwm_out",
-                "type": "output",
-                "variable": {
-                  "name": "pwm_out",
-                  "class": "output",
-                  "type": {
-                    "definition": "base-type",
-                    "value": "UINT"
-                  },
-                  "location": "",
-                  "initialValue": null,
-                  "documentation": "",
-                  "debug": false
-                }
-              },
               {
                 "handleId": "procenta",
                 "type": "input",
@@ -649,16 +668,40 @@ FUNCTION_BLOCK FB_L298N
                   "documentation": "",
                   "debug": false
                 }
+              },
+              {
+                "handleId": "povoleni",
+                "type": "input",
+                "variable": {
+                  "id": "",
+                  "name": ""
+                }
+              },
+              {
+                "handleId": "pwm_out",
+                "type": "output",
+                "variable": {
+                  "name": "pwm_out",
+                  "class": "output",
+                  "type": {
+                    "definition": "base-type",
+                    "value": "UINT"
+                  },
+                  "location": "",
+                  "initialValue": null,
+                  "documentation": "",
+                  "debug": false
+                }
               }
             ],
             "draggable": true,
             "selectable": true,
             "deletable": true
           },
-          "width": 198,
+          "width": 216,
           "height": 180,
           "measured": {
-            "width": 198,
+            "width": 216,
             "height": 180
           },
           "draggable": true,
@@ -667,7 +710,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa",
+          "id": "CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2",
           "type": "contact",
           "position": {
             "x": 117,
@@ -783,10 +826,10 @@ FUNCTION_BLOCK FB_L298N
                 "right": -3
               }
             },
-            "numericId": "1529835",
+            "numericId": "6230277",
             "variable": {
               "id": "",
-              "name": "FORWARD",
+              "name": "IN1",
               "type": {
                 "definition": "base-type",
                 "value": "BOOL"
@@ -801,7 +844,7 @@ FUNCTION_BLOCK FB_L298N
             "selectable": true,
             "deletable": true,
             "branchContext": {
-              "blockId": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "blockId": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "povoleni",
               "direction": "input"
             }
@@ -818,7 +861,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
+          "id": "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
           "type": "parallel",
           "position": {
             "x": 68,
@@ -1007,7 +1050,7 @@ FUNCTION_BLOCK FB_L298N
                 "right": 3
               }
             },
-            "numericId": "9548678",
+            "numericId": "8085754",
             "parallelInputConnector": {
               "glbPosition": {
                 "x": 68,
@@ -1042,7 +1085,7 @@ FUNCTION_BLOCK FB_L298N
                 "bottom": 1
               }
             },
-            "parallelCloseReference": "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44",
+            "parallelCloseReference": "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914",
             "type": "open",
             "variable": {
               "name": ""
@@ -1052,7 +1095,7 @@ FUNCTION_BLOCK FB_L298N
             "selectable": false,
             "deletable": false,
             "branchContext": {
-              "blockId": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "blockId": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "povoleni",
               "direction": "input"
             }
@@ -1069,7 +1112,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "CONTACT_1bd97f65-74cf-4541-880f-a16d39da046b",
+          "id": "CONTACT_4a3cfa11-f583-44cb-a6c3-ed5cb33b67dd",
           "type": "contact",
           "position": {
             "x": 117,
@@ -1185,10 +1228,10 @@ FUNCTION_BLOCK FB_L298N
                 "right": -3
               }
             },
-            "numericId": "5127548",
+            "numericId": "3477209",
             "variable": {
               "id": "",
-              "name": "BACKWARDS",
+              "name": "IN2",
               "type": {
                 "definition": "base-type",
                 "value": "BOOL"
@@ -1203,7 +1246,7 @@ FUNCTION_BLOCK FB_L298N
             "selectable": true,
             "deletable": true,
             "branchContext": {
-              "blockId": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "blockId": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "povoleni",
               "direction": "input"
             }
@@ -1220,7 +1263,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44",
+          "id": "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914",
           "type": "parallel",
           "position": {
             "x": 186,
@@ -1409,7 +1452,7 @@ FUNCTION_BLOCK FB_L298N
                 "right": 3
               }
             },
-            "numericId": "5069441",
+            "numericId": "8424437",
             "parallelInputConnector": {
               "glbPosition": {
                 "x": 186,
@@ -1444,7 +1487,7 @@ FUNCTION_BLOCK FB_L298N
                 "top": 1
               }
             },
-            "parallelOpenReference": "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
+            "parallelOpenReference": "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
             "type": "close",
             "variable": {
               "name": ""
@@ -1454,7 +1497,7 @@ FUNCTION_BLOCK FB_L298N
             "selectable": false,
             "deletable": false,
             "branchContext": {
-              "blockId": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "blockId": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "povoleni",
               "direction": "input"
             }
@@ -1474,7 +1517,7 @@ FUNCTION_BLOCK FB_L298N
           "id": "right-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13",
           "type": "powerRail",
           "position": {
-            "x": 768,
+            "x": 786,
             "y": 30
           },
           "data": {
@@ -1496,7 +1539,7 @@ FUNCTION_BLOCK FB_L298N
                   "top": 20,
                   "left": -3
                 },
-                "x": 768
+                "x": 786
               }
             ],
             "inputHandles": [
@@ -1560,7 +1603,7 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "VARIABLE_6372485b-a832-4c0f-8e5b-4150e75c5dc8",
+          "id": "VARIABLE_91325d22-c27f-45d3-b5c5-a549367d92eb",
           "type": "variable",
           "position": {
             "x": 200,
@@ -1620,7 +1663,7 @@ FUNCTION_BLOCK FB_L298N
               "isConnectable": false,
               "type": "source"
             },
-            "numericId": "1938567",
+            "numericId": "9258347",
             "variable": {
               "name": "procenta",
               "class": "input",
@@ -1636,15 +1679,19 @@ FUNCTION_BLOCK FB_L298N
             "executionOrder": 0,
             "variant": "input",
             "block": {
-              "id": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "id": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "procenta",
               "variableType": {
                 "name": "procenta",
                 "class": "input",
                 "type": {
-                  "definition": "base-type",
-                  "value": "INT"
-                }
+                  "value": "INT",
+                  "definition": "base-type"
+                },
+                "location": "",
+                "initialValue": null,
+                "documentation": "",
+                "debug": false
               }
             },
             "draggable": false,
@@ -1658,10 +1705,10 @@ FUNCTION_BLOCK FB_L298N
           "dragging": false
         },
         {
-          "id": "VARIABLE_1f3db866-8ad6-4f2e-afd3-fe156a00d66b",
+          "id": "VARIABLE_8a10f2ff-3899-4644-b8a2-37f5a752135f",
           "type": "variable",
           "position": {
-            "x": 538,
+            "x": 556,
             "y": 74
           },
           "width": 80,
@@ -1674,7 +1721,7 @@ FUNCTION_BLOCK FB_L298N
             "handles": [
               {
                 "glbPosition": {
-                  "x": 538,
+                  "x": 556,
                   "y": 90
                 },
                 "relPosition": {
@@ -1690,7 +1737,7 @@ FUNCTION_BLOCK FB_L298N
             "inputHandles": [
               {
                 "glbPosition": {
-                  "x": 538,
+                  "x": 556,
                   "y": 90
                 },
                 "relPosition": {
@@ -1706,7 +1753,7 @@ FUNCTION_BLOCK FB_L298N
             "outputHandles": [],
             "inputConnector": {
               "glbPosition": {
-                "x": 538,
+                "x": 556,
                 "y": 90
               },
               "relPosition": {
@@ -1718,7 +1765,7 @@ FUNCTION_BLOCK FB_L298N
               "isConnectable": false,
               "type": "target"
             },
-            "numericId": "8732728",
+            "numericId": "4634106",
             "variable": {
               "name": "pwm_out",
               "class": "output",
@@ -1734,15 +1781,19 @@ FUNCTION_BLOCK FB_L298N
             "executionOrder": 0,
             "variant": "output",
             "block": {
-              "id": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+              "id": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
               "handleId": "pwm_out",
               "variableType": {
                 "name": "pwm_out",
                 "class": "output",
                 "type": {
-                  "definition": "base-type",
-                  "value": "UINT"
-                }
+                  "value": "UINT",
+                  "definition": "base-type"
+                },
+                "location": "",
+                "initialValue": null,
+                "documentation": "",
+                "debug": false
               }
             },
             "draggable": false,
@@ -1758,53 +1809,11 @@ FUNCTION_BLOCK FB_L298N
       ],
       "edges": [
         {
-          "id": "e_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_right-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13__ENO_right-rail",
-          "source": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+          "id": "e_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_right-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13__ENO_right-rail",
+          "source": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
           "target": "right-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13",
           "sourceHandle": "ENO",
           "targetHandle": "right-rail"
-        },
-        {
-          "id": "e_left-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13_PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43__branch_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_povoleni_input",
-          "source": "left-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13",
-          "target": "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
-          "sourceHandle": "branch_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_povoleni",
-          "targetHandle": "input"
-        },
-        {
-          "id": "e_PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43_CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa__output-right_input",
-          "source": "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
-          "target": "CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa",
-          "sourceHandle": "output-right",
-          "targetHandle": "input"
-        },
-        {
-          "id": "e_PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43_CONTACT_1bd97f65-74cf-4541-880f-a16d39da046b__output-down_input",
-          "source": "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
-          "target": "CONTACT_1bd97f65-74cf-4541-880f-a16d39da046b",
-          "sourceHandle": "output-down",
-          "targetHandle": "input"
-        },
-        {
-          "id": "e_CONTACT_1bd97f65-74cf-4541-880f-a16d39da046b_PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44__output_input-down",
-          "source": "CONTACT_1bd97f65-74cf-4541-880f-a16d39da046b",
-          "target": "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44",
-          "sourceHandle": "output",
-          "targetHandle": "input-down"
-        },
-        {
-          "id": "e_PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80__output-right_povoleni",
-          "source": "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44",
-          "target": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
-          "sourceHandle": "output-right",
-          "targetHandle": "povoleni"
-        },
-        {
-          "id": "e_CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa_PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44__output_input",
-          "source": "CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa",
-          "target": "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44",
-          "sourceHandle": "output",
-          "targetHandle": "input"
         },
         {
           "id": "e_left-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13_CONTACT_336f019b-0fe3-4b52-b9d4-016fdd1e1fe8__left-rail_input",
@@ -1814,23 +1823,65 @@ FUNCTION_BLOCK FB_L298N
           "targetHandle": "input"
         },
         {
-          "id": "e_CONTACT_336f019b-0fe3-4b52-b9d4-016fdd1e1fe8_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80__output_EN",
+          "id": "e_CONTACT_336f019b-0fe3-4b52-b9d4-016fdd1e1fe8_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54__output_EN",
           "source": "CONTACT_336f019b-0fe3-4b52-b9d4-016fdd1e1fe8",
-          "target": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+          "target": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
           "sourceHandle": "output",
           "targetHandle": "EN"
         },
         {
-          "id": "e_VARIABLE_6372485b-a832-4c0f-8e5b-4150e75c5dc8_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80__output_procenta",
-          "source": "VARIABLE_6372485b-a832-4c0f-8e5b-4150e75c5dc8",
-          "target": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+          "id": "e_left-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13_PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345__branch_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_povoleni_input",
+          "source": "left-rail-rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13",
+          "target": "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
+          "sourceHandle": "branch_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_povoleni",
+          "targetHandle": "input"
+        },
+        {
+          "id": "e_PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345_CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2__output-right_input",
+          "source": "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
+          "target": "CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2",
+          "sourceHandle": "output-right",
+          "targetHandle": "input"
+        },
+        {
+          "id": "e_CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2_PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914__output_input",
+          "source": "CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2",
+          "target": "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914",
+          "sourceHandle": "output",
+          "targetHandle": "input"
+        },
+        {
+          "id": "e_PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345_CONTACT_4a3cfa11-f583-44cb-a6c3-ed5cb33b67dd__output-down_input",
+          "source": "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
+          "target": "CONTACT_4a3cfa11-f583-44cb-a6c3-ed5cb33b67dd",
+          "sourceHandle": "output-down",
+          "targetHandle": "input"
+        },
+        {
+          "id": "e_CONTACT_4a3cfa11-f583-44cb-a6c3-ed5cb33b67dd_PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914__output_input-down",
+          "source": "CONTACT_4a3cfa11-f583-44cb-a6c3-ed5cb33b67dd",
+          "target": "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914",
+          "sourceHandle": "output",
+          "targetHandle": "input-down"
+        },
+        {
+          "id": "e_PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54__output-right_povoleni",
+          "source": "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914",
+          "target": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
+          "sourceHandle": "output-right",
+          "targetHandle": "povoleni"
+        },
+        {
+          "id": "e_VARIABLE_91325d22-c27f-45d3-b5c5-a549367d92eb_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54__output_procenta",
+          "source": "VARIABLE_91325d22-c27f-45d3-b5c5-a549367d92eb",
+          "target": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
           "sourceHandle": "output",
           "targetHandle": "procenta"
         },
         {
-          "id": "e_BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80_VARIABLE_1f3db866-8ad6-4f2e-afd3-fe156a00d66b__pwm_out_input",
-          "source": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
-          "target": "VARIABLE_1f3db866-8ad6-4f2e-afd3-fe156a00d66b",
+          "id": "e_BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54_VARIABLE_8a10f2ff-3899-4644-b8a2-37f5a752135f__pwm_out_input",
+          "source": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
+          "target": "VARIABLE_8a10f2ff-3899-4644-b8a2-37f5a752135f",
           "sourceHandle": "pwm_out",
           "targetHandle": "input"
         }
@@ -1838,13 +1889,13 @@ FUNCTION_BLOCK FB_L298N
       "selectedNodes": [],
       "handleBranches": [
         {
-          "blockId": "BLOCK_3f8ae180-45d4-41f4-99dc-21e8066ecd80",
+          "blockId": "BLOCK_190afcac-4f01-4cae-9824-d05a186c9d54",
           "handleId": "povoleni",
           "direction": "input",
           "nodeIds": [
-            "PARALLEL_OPEN_a4b1cfd7-44b9-4205-8e34-97e0b8bbae43",
-            "CONTACT_f670818a-9b5a-414e-8c7b-27ebcddba7aa",
-            "PARALLEL_CLOSE_b6aa7b0f-f42c-433e-bb91-6d80c2cf0b44"
+            "PARALLEL_OPEN_8bf77728-541d-4465-92ca-02e8833ac345",
+            "CONTACT_a110580b-06d2-4b7a-bb20-3d9f4e83ceb2",
+            "PARALLEL_CLOSE_fd294b47-937e-42a4-8d52-e27eda989914"
           ]
         }
       ]
