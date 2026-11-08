@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "name": "knihovna-moje",
+    "type": "plc-library"
+  },
+  "data": {
+    "dataTypes": [],
+    "globalVariableLists": [],
+    "pous": [],
+    "configuration": {
+      "resource": {
+        "tasks": [],
+        "instances": [],
+        "globalVariables": []
+      }
+    },
+    "libraries": [
+      {
+        "name": "knihovna-moje",
+        "version": "0.1.0"
+      }
+    ]
+  }
+}

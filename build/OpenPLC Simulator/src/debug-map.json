@@ -1,0 +1,329 @@
+{
+  "version": 2,
+  "md5": "73a0f47bf0ff100f6b69e12360160147",
+  "typeTags": {
+    "BOOL": 0,
+    "SINT": 1,
+    "USINT": 2,
+    "INT": 3,
+    "UINT": 4,
+    "DINT": 5,
+    "UDINT": 6,
+    "LINT": 7,
+    "ULINT": 8,
+    "REAL": 9,
+    "LREAL": 10,
+    "BYTE": 11,
+    "WORD": 12,
+    "DWORD": 13,
+    "LWORD": 14,
+    "TIME": 15,
+    "DATE": 16,
+    "TOD": 17,
+    "DT": 18,
+    "STRING": 19,
+    "WSTRING": 20
+  },
+  "arrays": [
+    {
+      "index": 0,
+      "count": 42
+    }
+  ],
+  "leaves": [
+    {
+      "arrayIdx": 0,
+      "elemIdx": 0,
+      "path": "LIBDBG_INST.HW_PWM_I.EN",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 1,
+      "path": "LIBDBG_INST.HW_PWM_I.PIN",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 2,
+      "path": "LIBDBG_INST.HW_PWM_I.DUTY",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 3,
+      "path": "LIBDBG_INST.HW_PWM_I.Q",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 4,
+      "path": "LIBDBG_INST.HW_PWM_I.HASBEENINITIALIZED",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 5,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.PROCENTA",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 6,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.POVOLENI",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 7,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.POMOCNA_PROCENTA",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 8,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.POMOCNA_ZACATEK",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 9,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.POMOCNA_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 10,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.PROCENTA_LIMIT",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 11,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I.PWM_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 12,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_LIMIT1600273_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 13,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_LIMIT1600273_OUT",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 14,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_TO_UINT8009467_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 15,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_TO_UINT8009467_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 16,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_MUL5117243_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 17,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_MUL5117243_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 18,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_SEL3641176_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 19,
+      "path": "LIBDBG_INST.CUSTOM_PWM_CTRL_I._TMP_SEL3641176_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 20,
+      "path": "LIBDBG_INST.L298N_1_I.PROCENTA",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 21,
+      "path": "LIBDBG_INST.L298N_1_I.FORWARD",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 22,
+      "path": "LIBDBG_INST.L298N_1_I.BACKWARDS",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 23,
+      "path": "LIBDBG_INST.L298N_1_I.E_STOP",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 24,
+      "path": "LIBDBG_INST.L298N_1_I.PWM_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 25,
+      "path": "LIBDBG_INST.L298N_1_I.IN1",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 26,
+      "path": "LIBDBG_INST.L298N_1_I.IN2",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 27,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.PROCENTA",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 28,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.POVOLENI",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 29,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.POMOCNA_PROCENTA",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 30,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.POMOCNA_ZACATEK",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 31,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.POMOCNA_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 32,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.PROCENTA_LIMIT",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 33,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0.PWM_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 34,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_LIMIT1600273_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 35,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_LIMIT1600273_OUT",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 36,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_TO_UINT8009467_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 37,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_TO_UINT8009467_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 38,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_MUL5117243_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 39,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_MUL5117243_OUT",
+      "type": "UINT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 40,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_SEL3641176_ENO",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 41,
+      "path": "LIBDBG_INST.L298N_1_I.CUSTOM_PWM_CTRL0._TMP_SEL3641176_OUT",
+      "type": "UINT",
+      "size": 2
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "pouOffsets": {
+    "HW_PWM": {
+      "kind": "FUNCTION_BLOCK",
+      "startLine": 1,
+      "endLine": 30
+    },
+    "CUSTOM_PWM_CTRL": {
+      "kind": "FUNCTION_BLOCK",
+      "startLine": 32,
+      "endLine": 73
+    },
+    "L298N_1": {
+      "kind": "FUNCTION_BLOCK",
+      "startLine": 75,
+      "endLine": 97
+    },
+    "LIBDBG_MAIN": {
+      "kind": "PROGRAM",
+      "startLine": 99,
+      "endLine": 109
+    }
+  }
+}

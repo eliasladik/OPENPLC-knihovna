@@ -1,0 +1,190 @@
+{
+  "formatVersion": 1,
+  "manifest": {
+    "name": "knihovna-moje",
+    "version": "0.1.0",
+    "namespace": "knihovna_moje",
+    "functions": [],
+    "functionBlocks": [
+      {
+        "name": "CUSTOM_PWM_CTRL",
+        "inputs": [
+          {
+            "name": "PROCENTA",
+            "type": "INT"
+          },
+          {
+            "name": "POVOLENI",
+            "type": "BOOL"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "PWM_OUT",
+            "type": "UINT"
+          }
+        ],
+        "inouts": [],
+        "locals": [
+          {
+            "name": "POMOCNA_PROCENTA",
+            "type": "UINT"
+          },
+          {
+            "name": "POMOCNA_ZACATEK",
+            "type": "UINT"
+          },
+          {
+            "name": "POMOCNA_OUT",
+            "type": "UINT"
+          },
+          {
+            "name": "PROCENTA_LIMIT",
+            "type": "INT"
+          },
+          {
+            "name": "_TMP_LIMIT1600273_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_LIMIT1600273_OUT",
+            "type": "INT"
+          },
+          {
+            "name": "_TMP_TO_UINT8009467_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_TO_UINT8009467_OUT",
+            "type": "UINT"
+          },
+          {
+            "name": "_TMP_MUL5117243_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_MUL5117243_OUT",
+            "type": "UINT"
+          },
+          {
+            "name": "_TMP_SEL3641176_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_SEL3641176_OUT",
+            "type": "UINT"
+          }
+        ]
+      },
+      {
+        "name": "L298N",
+        "inputs": [
+          {
+            "name": "PROCENTA",
+            "type": "INT"
+          },
+          {
+            "name": "FORWARD",
+            "type": "BOOL"
+          },
+          {
+            "name": "BACKWARDS",
+            "type": "BOOL"
+          },
+          {
+            "name": "E_STOP",
+            "type": "BOOL"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "PWM_OUT",
+            "type": "UINT"
+          },
+          {
+            "name": "IN1",
+            "type": "BOOL"
+          },
+          {
+            "name": "IN2",
+            "type": "BOOL"
+          }
+        ],
+        "inouts": [],
+        "locals": [
+          {
+            "name": "CUSTOM_PWM_CTRL0",
+            "type": "CUSTOM_PWM_CTRL"
+          }
+        ]
+      }
+    ],
+    "types": [],
+    "globals": [],
+    "headers": [],
+    "isBuiltin": false,
+    "sourceFiles": [
+      "CUSTOM_PWM_CTRL.st",
+      "L298N.st"
+    ],
+    "displayName": "knihovna-moje"
+  },
+  "chunks": [
+    {
+      "name": "CUSTOM_PWM_CTRL",
+      "kind": "functionBlock",
+      "header": "class CUSTOM_PWM_CTRL {\npublic:\n    // Inputs\n    IEC_INT PROCENTA;\n    IEC_BOOL POVOLENI;\n    // Local variables\n    IEC_UINT POMOCNA_PROCENTA;\n    IEC_UINT POMOCNA_ZACATEK;\n    IEC_UINT POMOCNA_OUT;\n    IEC_INT PROCENTA_LIMIT;\n    // Outputs\n    IEC_UINT PWM_OUT;\n    // Local variables\n    IEC_BOOL _TMP_LIMIT1600273_ENO;\n    IEC_INT _TMP_LIMIT1600273_OUT;\n    IEC_BOOL _TMP_TO_UINT8009467_ENO;\n    IEC_UINT _TMP_TO_UINT8009467_OUT;\n    IEC_BOOL _TMP_MUL5117243_ENO;\n    IEC_UINT _TMP_MUL5117243_OUT;\n    IEC_BOOL _TMP_SEL3641176_ENO;\n    IEC_UINT _TMP_SEL3641176_OUT;\n\n    // Implicit IEC 61131-3 ENO pin (mirrors EN)\n    IEC_BOOL ENO = true;\n\n    // Constructor\n    CUSTOM_PWM_CTRL();\n\n    // Execute function block\n    void operator()();\n\n    virtual ~CUSTOM_PWM_CTRL() = default;\n};\n",
+      "cpp": "CUSTOM_PWM_CTRL::CUSTOM_PWM_CTRL()\n    : POMOCNA_ZACATEK(0)\n{\n    // Initialize variables\n}\n\nvoid CUSTOM_PWM_CTRL::operator()() {\n    if (true) {\n        _TMP_LIMIT1600273_OUT = LIMIT(static_cast<IEC_INT>(0), PROCENTA, static_cast<IEC_INT>(100));\n        _TMP_LIMIT1600273_ENO = true;\n    } else {\n        _TMP_LIMIT1600273_ENO = false;\n    }\n    if (_TMP_LIMIT1600273_ENO) {\n        PROCENTA_LIMIT = _TMP_LIMIT1600273_OUT;\n    }\n    if (true) {\n        _TMP_TO_UINT8009467_OUT = TO_UINT(PROCENTA_LIMIT);\n        _TMP_TO_UINT8009467_ENO = true;\n    } else {\n        _TMP_TO_UINT8009467_ENO = false;\n    }\n    if (_TMP_TO_UINT8009467_ENO) {\n        POMOCNA_PROCENTA = _TMP_TO_UINT8009467_OUT;\n    }\n    if (_TMP_TO_UINT8009467_ENO) {\n        _TMP_MUL5117243_OUT = MUL(POMOCNA_PROCENTA, static_cast<IEC_UINT>(655));\n        _TMP_MUL5117243_ENO = true;\n    } else {\n        _TMP_MUL5117243_ENO = false;\n    }\n    if (_TMP_MUL5117243_ENO) {\n        POMOCNA_OUT = _TMP_MUL5117243_OUT;\n    }\n    if (true) {\n        _TMP_SEL3641176_OUT = SEL(POVOLENI, POMOCNA_ZACATEK, POMOCNA_OUT);\n        _TMP_SEL3641176_ENO = true;\n    } else {\n        _TMP_SEL3641176_ENO = false;\n    }\n    if (_TMP_SEL3641176_ENO) {\n        PWM_OUT = _TMP_SEL3641176_OUT;\n    }\n}\n",
+      "deps": [
+        {
+          "library": "iec-std-functions",
+          "name": "LIMIT"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "MUL"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "SEL"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "TO_UINT"
+        }
+      ]
+    },
+    {
+      "name": "L298N",
+      "kind": "functionBlock",
+      "header": "class L298N {\npublic:\n    // Inputs\n    IEC_INT PROCENTA;\n    IEC_BOOL FORWARD;\n    IEC_BOOL BACKWARDS;\n    IEC_BOOL E_STOP;\n    // Outputs\n    IEC_UINT PWM_OUT;\n    IEC_BOOL IN1;\n    IEC_BOOL IN2;\n    // Local variables\n    CUSTOM_PWM_CTRL CUSTOM_PWM_CTRL0;\n\n    // Implicit IEC 61131-3 ENO pin (mirrors EN)\n    IEC_BOOL ENO = true;\n\n    // Constructor\n    L298N();\n\n    // Execute function block\n    void operator()();\n\n    virtual ~L298N() = default;\n};\n",
+      "cpp": "L298N::L298N() {\n    // Initialize variables\n}\n\nvoid L298N::operator()() {\n    CUSTOM_PWM_CTRL0.PROCENTA = PROCENTA;\n    CUSTOM_PWM_CTRL0.POVOLENI = (BACKWARDS) | (FORWARD);\n    if (NOT(E_STOP)) {\n        CUSTOM_PWM_CTRL0();\n        CUSTOM_PWM_CTRL0.ENO = true;\n    } else {\n        CUSTOM_PWM_CTRL0.ENO = false;\n    }\n    if (CUSTOM_PWM_CTRL0.ENO) {\n        PWM_OUT = CUSTOM_PWM_CTRL0.PWM_OUT;\n    }\n    IN1 = ((NOT(BACKWARDS)) & (FORWARD)) & (NOT(E_STOP));\n    IN2 = ((BACKWARDS) & (NOT(FORWARD))) & (NOT(E_STOP));\n}\n",
+      "deps": [
+        {
+          "library": "iec-std-functions",
+          "name": "NOT"
+        },
+        {
+          "library": "knihovna-moje",
+          "name": "CUSTOM_PWM_CTRL"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "knihovna-moje",
+      "version": "0.1.0"
+    }
+  ],
+  "sources": [
+    {
+      "fileName": "CUSTOM_PWM_CTRL.st",
+      "source": "FUNCTION_BLOCK CUSTOM_PWM_CTRL\n  VAR_INPUT\n    procenta : INT;\n    povoleni : BOOL;\n  END_VAR\n  VAR\n    pomocna_procenta : UINT;\n    pomocna_zacatek : UINT := 0;\n    pomocna_out : UINT;\n    procenta_limit : INT;\n  END_VAR\n  VAR_OUTPUT\n    pwm_out : UINT;\n  END_VAR\n  VAR\n    _TMP_LIMIT1600273_ENO : BOOL;\n    _TMP_LIMIT1600273_OUT : INT;\n    _TMP_TO_UINT8009467_ENO : BOOL;\n    _TMP_TO_UINT8009467_OUT : UINT;\n    _TMP_MUL5117243_ENO : BOOL;\n    _TMP_MUL5117243_OUT : UINT;\n    _TMP_SEL3641176_ENO : BOOL;\n    _TMP_SEL3641176_OUT : UINT;\n  END_VAR\n\n  _TMP_LIMIT1600273_OUT := LIMIT(EN := TRUE, MN := 0, IN := procenta, MX := 100, ENO => _TMP_LIMIT1600273_ENO);\n  IF _TMP_LIMIT1600273_ENO THEN\n      procenta_limit := _TMP_LIMIT1600273_OUT;\n  END_IF;\n  _TMP_TO_UINT8009467_OUT := TO_UINT(EN := TRUE, IN := procenta_limit, ENO => _TMP_TO_UINT8009467_ENO);\n  IF _TMP_TO_UINT8009467_ENO THEN\n      pomocna_procenta := _TMP_TO_UINT8009467_OUT;\n  END_IF;\n  _TMP_MUL5117243_OUT := MUL(EN := _TMP_TO_UINT8009467_ENO, IN1 := pomocna_procenta, IN2 := 655, ENO => _TMP_MUL5117243_ENO);\n  IF _TMP_MUL5117243_ENO THEN\n      pomocna_out := _TMP_MUL5117243_OUT;\n  END_IF;\n  _TMP_SEL3641176_OUT := SEL(EN := TRUE, G := povoleni, IN0 := pomocna_zacatek, IN1 := pomocna_out, ENO => _TMP_SEL3641176_ENO);\n  IF _TMP_SEL3641176_ENO THEN\n      pwm_out := _TMP_SEL3641176_OUT;\n  END_IF;\nEND_FUNCTION_BLOCK\n"
+    },
+    {
+      "fileName": "L298N.st",
+      "source": "FUNCTION_BLOCK L298N\n  VAR_INPUT\n    procenta : INT;\n    FORWARD : BOOL;\n    BACKWARDS : BOOL;\n    E_STOP : BOOL;\n  END_VAR\n  VAR_OUTPUT\n    pwm_out : UINT;\n    IN1 : BOOL;\n    IN2 : BOOL;\n  END_VAR\n  VAR\n    CUSTOM_PWM_CTRL0 : CUSTOM_PWM_CTRL;\n  END_VAR\n\n  CUSTOM_PWM_CTRL0(EN := NOT(E_STOP), procenta := procenta, povoleni := BACKWARDS OR FORWARD);\n  IF CUSTOM_PWM_CTRL0.ENO THEN\n      pwm_out := CUSTOM_PWM_CTRL0.pwm_out;\n  END_IF;\n  IN1 := NOT(BACKWARDS) AND FORWARD AND NOT(E_STOP);\n  IN2 := BACKWARDS AND NOT(FORWARD) AND NOT(E_STOP);\nEND_FUNCTION_BLOCK\n"
+    }
+  ]
+}
