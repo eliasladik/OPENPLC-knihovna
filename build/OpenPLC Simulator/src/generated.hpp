@@ -53,41 +53,38 @@ constexpr size_t LIST_LENGTH = 254;
 
 namespace strucpp {
 
-class HW_PWM;
-class CUSTOM_PWM_CTRL;
-class L298N_1;
+class FB_CUSTOM_PWM_CTRL;
+class FB_L298N;
+class FB_TOGGLE;
 class Program_LIBDBG_MAIN;
 class Configuration_CONFIG0;
 
-class HW_PWM;
-class CUSTOM_PWM_CTRL;
-class L298N_1;
-class Program_LIBDBG_MAIN;
-class Configuration_CONFIG0;
-
-class HW_PWM {
+// Library: iec-standard-fb
+class R_TRIG;
+class R_TRIG {
 public:
     // Inputs
-    IEC_BOOL EN;
-    IEC_UINT PIN;
-    IEC_UINT DUTY;
+    IEC_BOOL CLK;
     // Outputs
     IEC_BOOL Q;
     // Local variables
-    IEC_BOOL HASBEENINITIALIZED;
+    IEC_BOOL M;
 
     // Implicit IEC 61131-3 ENO pin (mirrors EN)
     IEC_BOOL ENO = true;
 
     // Constructor
-    HW_PWM();
+    R_TRIG();
 
     // Execute function block
     void operator()();
 
-    virtual ~HW_PWM() = default;
+    virtual ~R_TRIG() = default;
 };
 
+
+// Library: knihovna-moje
+class CUSTOM_PWM_CTRL;
 class CUSTOM_PWM_CTRL {
 public:
     // Inputs
@@ -122,7 +119,48 @@ public:
     virtual ~CUSTOM_PWM_CTRL() = default;
 };
 
-class L298N_1 {
+
+class FB_CUSTOM_PWM_CTRL;
+class FB_L298N;
+class FB_TOGGLE;
+class Program_LIBDBG_MAIN;
+class Configuration_CONFIG0;
+
+class FB_CUSTOM_PWM_CTRL {
+public:
+    // Inputs
+    IEC_INT PROCENTA;
+    IEC_BOOL POVOLENI;
+    // Local variables
+    IEC_UINT POMOCNA_PROCENTA;
+    IEC_UINT POMOCNA_ZACATEK;
+    IEC_UINT POMOCNA_OUT;
+    IEC_INT PROCENTA_LIMIT;
+    // Outputs
+    IEC_UINT PWM_OUT;
+    // Local variables
+    IEC_BOOL _TMP_LIMIT1600273_ENO;
+    IEC_INT _TMP_LIMIT1600273_OUT;
+    IEC_BOOL _TMP_TO_UINT8009467_ENO;
+    IEC_UINT _TMP_TO_UINT8009467_OUT;
+    IEC_BOOL _TMP_MUL5117243_ENO;
+    IEC_UINT _TMP_MUL5117243_OUT;
+    IEC_BOOL _TMP_SEL3641176_ENO;
+    IEC_UINT _TMP_SEL3641176_OUT;
+
+    // Implicit IEC 61131-3 ENO pin (mirrors EN)
+    IEC_BOOL ENO = true;
+
+    // Constructor
+    FB_CUSTOM_PWM_CTRL();
+
+    // Execute function block
+    void operator()();
+
+    virtual ~FB_CUSTOM_PWM_CTRL() = default;
+};
+
+class FB_L298N {
 public:
     // Inputs
     IEC_INT PROCENTA;
@@ -140,20 +178,43 @@ public:
     IEC_BOOL ENO = true;
 
     // Constructor
-    L298N_1();
+    FB_L298N();
 
     // Execute function block
     void operator()();
 
-    virtual ~L298N_1() = default;
+    virtual ~FB_L298N() = default;
+};
+
+class FB_TOGGLE {
+public:
+    // Inputs
+    IEC_BOOL IN;
+    // Outputs
+    IEC_BOOL OUT;
+    // Local variables
+    IEC_BOOL HRANA;
+    IEC_BOOL PULS;
+    R_TRIG R_TRIG0;
+
+    // Implicit IEC 61131-3 ENO pin (mirrors EN)
+    IEC_BOOL ENO = true;
+
+    // Constructor
+    FB_TOGGLE();
+
+    // Execute function block
+    void operator()();
+
+    virtual ~FB_TOGGLE() = default;
 };
 
 class Program_LIBDBG_MAIN : public ProgramBase {
 public:
     // Local variables
-    HW_PWM HW_PWM_I;
-    CUSTOM_PWM_CTRL CUSTOM_PWM_CTRL_I;
-    L298N_1 L298N_1_I;
+    FB_CUSTOM_PWM_CTRL FB_CUSTOM_PWM_CTRL_I;
+    FB_L298N FB_L298N_I;
+    FB_TOGGLE FB_TOGGLE_I;
 
     // Implicit IEC 61131-3 ENO pin (mirrors EN)
     IEC_BOOL ENO = true;

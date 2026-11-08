@@ -1,4 +1,4 @@
-FUNCTION_BLOCK L298N
+FUNCTION_BLOCK FB_L298N
   VAR_INPUT
     procenta : INT;
     FORWARD : BOOL;
@@ -15,7 +15,7 @@ FUNCTION_BLOCK L298N
   END_VAR
 
 {
-  "name": "L298N",
+  "name": "FB_L298N",
   "rungs": [
     {
       "id": "rung_PWM_CTRL_1eecedf4-bd5a-42b3-837f-21f13010ff13",

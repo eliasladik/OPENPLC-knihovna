@@ -1,7 +1,7 @@
 
 
 //Program MD5
-#define PROGRAM_MD5 "73a0f47bf0ff100f6b69e12360160147"
+#define PROGRAM_MD5 "1b7ce588e2f28fb072337e66e3167be6"
 
 //Comms Configuration
 #define SIMULATOR_MODE
@@ -23,3 +23,6 @@
 #define NUM_ANALOG_OUTPUT 0
 
 
+
+//Retain
+#define OPLC_RETAIN_BLOB_SIZE 15

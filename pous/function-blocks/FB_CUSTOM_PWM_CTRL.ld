@@ -1,4 +1,4 @@
-FUNCTION_BLOCK CUSTOM_PWM_CTRL
+FUNCTION_BLOCK FB_CUSTOM_PWM_CTRL
   VAR_INPUT
     procenta : INT;
     povoleni : BOOL;
@@ -16,7 +16,7 @@ FUNCTION_BLOCK CUSTOM_PWM_CTRL
   END_VAR
 
 {
-  "name": "CUSTOM_PWM_CTRL",
+  "name": "FB_CUSTOM_PWM_CTRL",
   "rungs": [
     {
       "id": "rung_CUSTOM_PWM_CTRL_171f24b6-402d-4ebd-a424-bf9eceaaf5da",
