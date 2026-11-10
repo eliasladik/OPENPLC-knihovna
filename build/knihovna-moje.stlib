@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "manifest": {
     "name": "knihovna-moje",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "namespace": "knihovna_moje",
     "functions": [],
     "functionBlocks": [
@@ -119,6 +119,52 @@
         ]
       },
       {
+        "name": "FB_ROTARYENCODER",
+        "inputs": [
+          {
+            "name": "CLK",
+            "type": "BOOL"
+          },
+          {
+            "name": "DT",
+            "type": "BOOL"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "COUNT",
+            "type": "INT"
+          }
+        ],
+        "inouts": [],
+        "locals": [
+          {
+            "name": "R_TRIG0",
+            "type": "R_TRIG"
+          },
+          {
+            "name": "F_TRIG0",
+            "type": "F_TRIG"
+          },
+          {
+            "name": "_TMP_ADD3264124_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_ADD3264124_OUT",
+            "type": "INT"
+          },
+          {
+            "name": "_TMP_SUB7835081_ENO",
+            "type": "BOOL"
+          },
+          {
+            "name": "_TMP_SUB7835081_OUT",
+            "type": "INT"
+          }
+        ]
+      },
+      {
         "name": "FB_TOGGLE",
         "inputs": [
           {
@@ -143,6 +189,40 @@
             "type": "R_TRIG"
           }
         ]
+      },
+      {
+        "name": "FB_CUSTOM_PWM",
+        "inputs": [
+          {
+            "name": "PINNR",
+            "type": "UINT"
+          },
+          {
+            "name": "IDUTYCYCLE",
+            "type": "INT"
+          },
+          {
+            "name": "BENABLE",
+            "type": "BOOL"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "BACTIVE",
+            "type": "BOOL"
+          },
+          {
+            "name": "BERROR",
+            "type": "BOOL"
+          },
+          {
+            "name": "WRAWDUTY",
+            "type": "UINT"
+          }
+        ],
+        "inouts": [],
+        "implementation": "cpp",
+        "sourceFile": "FB_CUSTOM_PWM.cpp"
       }
     ],
     "types": [],
@@ -152,7 +232,9 @@
     "sourceFiles": [
       "FB_CUSTOM_PWM_CTRL.st",
       "FB_L298N.st",
-      "FB_Toggle.st"
+      "FB_RotaryEncoder.st",
+      "FB_Toggle.st",
+      "FB_CUSTOM_PWM.cpp"
     ],
     "displayName": "knihovna-moje"
   },
@@ -178,6 +260,34 @@
         {
           "library": "iec-std-functions",
           "name": "TO_UINT"
+        }
+      ]
+    },
+    {
+      "name": "FB_ROTARYENCODER",
+      "kind": "functionBlock",
+      "header": "class FB_ROTARYENCODER {\npublic:\n    // Inputs\n    IEC_BOOL CLK;\n    IEC_BOOL DT;\n    // Outputs\n    IEC_INT COUNT;\n    // Local variables\n    R_TRIG R_TRIG0;\n    F_TRIG F_TRIG0;\n    IEC_BOOL _TMP_ADD3264124_ENO;\n    IEC_INT _TMP_ADD3264124_OUT;\n    IEC_BOOL _TMP_SUB7835081_ENO;\n    IEC_INT _TMP_SUB7835081_OUT;\n\n    // Implicit IEC 61131-3 ENO pin (mirrors EN)\n    IEC_BOOL ENO = true;\n\n    // Constructor\n    FB_ROTARYENCODER();\n\n    // Execute function block\n    void operator()();\n\n    virtual ~FB_ROTARYENCODER() = default;\n};\n",
+      "cpp": "FB_ROTARYENCODER::FB_ROTARYENCODER()\n    : COUNT(0)\n{\n    // Initialize variables\n}\n\nvoid FB_ROTARYENCODER::operator()() {\n    R_TRIG0.CLK = CLK;\n    R_TRIG0();\n    R_TRIG0.ENO = true;\n    F_TRIG0.CLK = CLK;\n    F_TRIG0();\n    F_TRIG0.ENO = true;\n    if (((DT) & (F_TRIG0.Q)) | ((NOT(DT)) & (R_TRIG0.Q))) {\n        _TMP_ADD3264124_OUT = ADD(COUNT, static_cast<IEC_INT>(1));\n        _TMP_ADD3264124_ENO = true;\n    } else {\n        _TMP_ADD3264124_ENO = false;\n    }\n    if (_TMP_ADD3264124_ENO) {\n        COUNT = _TMP_ADD3264124_OUT;\n    }\n    if (((DT) & (R_TRIG0.Q)) | ((NOT(DT)) & (F_TRIG0.Q))) {\n        _TMP_SUB7835081_OUT = SUB(COUNT, static_cast<IEC_INT>(1));\n        _TMP_SUB7835081_ENO = true;\n    } else {\n        _TMP_SUB7835081_ENO = false;\n    }\n    if (_TMP_SUB7835081_ENO) {\n        COUNT = _TMP_SUB7835081_OUT;\n    }\n}\n",
+      "deps": [
+        {
+          "library": "iec-standard-fb",
+          "name": "F_TRIG"
+        },
+        {
+          "library": "iec-standard-fb",
+          "name": "R_TRIG"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "ADD"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "NOT"
+        },
+        {
+          "library": "iec-std-functions",
+          "name": "SUB"
         }
       ]
     },
@@ -230,8 +340,16 @@
       "source": "FUNCTION_BLOCK FB_L298N\n  VAR_INPUT\n    procenta : INT;\n    FORWARD : BOOL;\n    BACKWARDS : BOOL;\n    E_STOP : BOOL;\n  END_VAR\n  VAR_OUTPUT\n    pwm_out : UINT;\n    IN1 : BOOL;\n    IN2 : BOOL;\n  END_VAR\n  VAR\n    FB_CUSTOM_PWM_CTRL0 : FB_CUSTOM_PWM_CTRL;\n  END_VAR\n\n  FB_CUSTOM_PWM_CTRL0(EN := NOT(E_STOP), procenta := procenta, povoleni := IN1 OR IN2);\n  IF FB_CUSTOM_PWM_CTRL0.ENO THEN\n      pwm_out := FB_CUSTOM_PWM_CTRL0.pwm_out;\n  END_IF;\n  IN1 := NOT(BACKWARDS) AND FORWARD AND NOT(E_STOP);\n  IN2 := BACKWARDS AND NOT(FORWARD) AND NOT(E_STOP);\nEND_FUNCTION_BLOCK\n"
     },
     {
+      "fileName": "FB_RotaryEncoder.st",
+      "source": "FUNCTION_BLOCK FB_RotaryEncoder\n  VAR_INPUT\n    CLK : BOOL;\n    DT : BOOL;\n  END_VAR\n  VAR_OUTPUT\n    COUNT : INT := 0;\n  END_VAR\n  VAR\n    R_TRIG0 : R_TRIG;\n    F_TRIG0 : F_TRIG;\n    _TMP_ADD3264124_ENO : BOOL;\n    _TMP_ADD3264124_OUT : INT;\n    _TMP_SUB7835081_ENO : BOOL;\n    _TMP_SUB7835081_OUT : INT;\n  END_VAR\n\n  R_TRIG0(CLK := CLK);\n  F_TRIG0(CLK := CLK);\n  _TMP_ADD3264124_OUT := ADD(EN := DT AND F_TRIG0.Q OR NOT(DT) AND R_TRIG0.Q, IN1 := COUNT, IN2 := 1, ENO => _TMP_ADD3264124_ENO);\n  IF _TMP_ADD3264124_ENO THEN\n      COUNT := _TMP_ADD3264124_OUT;\n  END_IF;\n  _TMP_SUB7835081_OUT := SUB(EN := DT AND R_TRIG0.Q OR NOT(DT) AND F_TRIG0.Q, IN1 := COUNT, IN2 := 1, ENO => _TMP_SUB7835081_ENO);\n  IF _TMP_SUB7835081_ENO THEN\n      COUNT := _TMP_SUB7835081_OUT;\n  END_IF;\nEND_FUNCTION_BLOCK\n"
+    },
+    {
       "fileName": "FB_Toggle.st",
       "source": "FUNCTION_BLOCK FB_Toggle\n  VAR_INPUT\n    IN : BOOL;\n  END_VAR\n  VAR_OUTPUT\n    OUT : BOOL;\n  END_VAR\n  VAR\n    puls : BOOL;\n    R_TRIG0 : R_TRIG;\n  END_VAR\n\n  R_TRIG0(CLK := IN);\n  puls := R_TRIG0.Q;\n  OUT := NOT(OUT) AND puls OR OUT AND NOT(puls);\nEND_FUNCTION_BLOCK\n"
+    },
+    {
+      "fileName": "FB_CUSTOM_PWM.cpp",
+      "source": "FUNCTION_BLOCK FB_CUSTOM_PWM\n  VAR_INPUT\n    PinNr : UINT := 2; (* default: PinNr = 2 (Backlight) *)\n    iDutycycle : INT; (* Střída v procentech: 0 ... 100 % *)\n    bEnable : BOOL := FALSE;\n  END_VAR\n  VAR_OUTPUT\n    bActive : BOOL;    (* TRUE: PWM výstup je aktivní (> 0 %) *)\n    bError : BOOL;     (* TRUE: Vstup iDutycycle > 100 % *)\n    wRawDuty : UINT;   (* Hodnota zápisu do PWM registru: 0 ... 4095 *)\n  END_VAR\n  VAR_EXTERNAL\n  END_VAR\n/* ================================================================\n *  C/C++ FUNCTION BLOCK\n * ================================================================ */\n\n#include <stdio.h>\n#include <stdint.h>\n#include <stdbool.h>\n#include <Arduino.h>\n\n// Nastavení rozlišení a maximální hodnota střídy podle architektury\n#if defined(ESP32)\n  const int PWM_FREQU = 1000;\n  const int PWM_RES = 12;\n  const int MAX_DUTY_CYCLE = (1 << PWM_RES) - 1; // 4095 (12 bitů)\n#elif defined(ESP8266)\n  const int MAX_DUTY_CYCLE = 1023;                // 1023 (10 bitů)\n#else\n  // AVR Arduino (Uno, Mega, Nano), STM32, RP2040 atd.\n  const int MAX_DUTY_CYCLE = 255;                 // 255 (8 bitů)\n#endif\n\nvoid setup()\n{\n  #if defined(ESP32)\n    ledcAttach(PinNr, PWM_FREQU, PWM_RES);\n  #elif defined(ESP8266)\n    analogWriteFreq(1000); // Nastavení frekvence PWM 1 kHz pro ESP8266\n  #endif\n}\n\nvoid loop()\n{ \n  // Detekce chyby rozsahu vstupu (mimo rozsah 0 až 100 %)\n  bError = (iDutycycle < 0) || (iDutycycle > 100);\n\n  int dimmer = 0;\n\n  // Výpočet střídy proběhne pouze při povolení a platném vstupu\n  if (bEnable && !bError)\n  {\n    int dutyPercent = constrain((int)iDutycycle, 0, 100);\n    dimmer = map(dutyPercent, 0, 100, 0, MAX_DUTY_CYCLE);\n  }\n\n  // Zápis na HW pin podle mikrokontroléru\n  #if defined(ESP32)\n    ledcWrite(PinNr, dimmer);\n  #else\n    analogWrite(PinNr, dimmer);\n  #endif\n\n  // Aktualizace stavových výstupů PLC\n  wRawDuty = (uint16_t)dimmer;\n  bActive = bEnable && (dimmer > 0);\n}\n\nEND_FUNCTION_BLOCK"
     }
   ]
 }
